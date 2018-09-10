@@ -1,0 +1,17 @@
+language: node_js
+
+os: osx
+
+script:
+  - curl -LO https://s3.amazonaws.com/mozilla-games/emscripten/releases/emsdk-portable.tar.gz && tar xvf emsdk-portable.tar.gz
+  - cd emsdk-portable/
+  - ./emsdk update
+  - ./emsdk install latest
+  - ./emsdk activate latest
+  - source ./emsdk_env.sh
+  - git clone --depth=1 https://github.com/openFrameworks/openFrameworks.git
+  - cd openFrameworks
+  - scripts/emscripten/./download_libs.sh
+  - cd examples/3d/3DPrimitivesExample
+  - cp ../../../scripts/templates/emscripten/Makefile .
+  - emmake make
