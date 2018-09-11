@@ -1,6 +1,8 @@
 language: node_js
 
-os: osx
+os:
+  - osx
+  - linux
 
 script:
   - git clone https://github.com/juj/emsdk.git
