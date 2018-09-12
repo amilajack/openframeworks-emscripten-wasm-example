@@ -16,4 +16,5 @@ script:
   - scripts/emscripten/./download_libs.sh
   - cd examples/3d/3DPrimitivesExample
   - cp ../../../scripts/templates/emscripten/Makefile .
+  - cp ../../../scripts/templates/emscripten/config.make .
   - emmake make
