@@ -1,8 +1,29 @@
 language: node_js
 
-os:
-  - osx
-  - linux
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode9.4
+      language: node_js
+      node_js:
+        - node
+
+    - os: linux
+      language: node_js
+      node_js:
+        - node
+      addons:
+        apt:
+          # https://kripken.github.io/emscripten-site/docs/building_from_source/building_emscripten_from_source_on_linux.html
+          packages:
+            - g++-4.8
+            - build-essential
+            - cmake
+            - python2.7
+            - nodejs
+            - git-core
+            - default-jre
+
 
 script:
   - git clone https://github.com/juj/emsdk.git
